@@ -19,17 +19,20 @@ fun main() {
     }
     /*val treatFunction = trickOrTreat(false, coins)*/
     //val treatFunction = trickOrTreat(false, {"$it quarters"})
-    val treatFunction = trickOrTreat(false){"$it quarters"}
+    val treatFunction = trickOrTreat(false) { "$it quarters" }
     val trickFunction = trickOrTreat(true,/* cupcake*/null)
-    treatFunction()
+
     trickFunction()
+    repeat(4) {
+        treatFunction()
+    }
 
 }
 
 private fun trickOrTreat(isTrick: Boolean, extraTreat: ((Int) -> String)?): () -> Unit {
-    if (isTrick){
+    if (isTrick) {
         return trick
-    }else{
+    } else {
         if (extraTreat != null) {
             println(extraTreat(5))
         }
@@ -37,7 +40,7 @@ private fun trickOrTreat(isTrick: Boolean, extraTreat: ((Int) -> String)?): () -
     }
 }
 
-private val  trick =  {
+private val trick = {
     println("no treats")
 }
 private val treat: () -> Unit = {
